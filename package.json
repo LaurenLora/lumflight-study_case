@@ -1,0 +1,17 @@
+{
+  "name": "lumflight",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start:next": "cd apps/interface && yarn dev",
+    "start:nest": "cd apps/lumflight && npm run start:dev",
+    "start": "concurrently \"npm run start:next\" \"npm run start:nest\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
