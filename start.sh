@@ -1,10 +1,6 @@
 #!/bin/bash
 
-# Mono repo dizinine git
-echo "Mono repo dizinine gidiliyor..."
-cd /path/to/your/mono-repo
 
-# Tüm bağımlılıkları yükle (ana dizin için npm kullanılıyor)
 echo "Ana dizindeki bağımlılıklar yükleniyor..."
 npm install
 
@@ -13,7 +9,6 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-# Apps dizinindeki tüm projelerin bağımlılıklarını yükle
 echo "Apps dizinindeki projelerin bağımlılıkları yükleniyor..."
 cd apps
 for dir in */; do
@@ -21,7 +16,6 @@ for dir in */; do
     echo "$dir projesinin bağımlılıkları yükleniyor..."
     cd "$dir"
 
-    # Proje yarn kullanıyorsa yarn, npm kullanıyorsa npm ile yükle
     if [ -f "yarn.lock" ]; then
       echo "$dir projesi yarn kullanıyor. Yarn ile bağımlılıklar yükleniyor..."
       yarn install
@@ -41,7 +35,6 @@ for dir in */; do
   fi
 done
 
-# Projeleri başlat
 echo "Projeler başlatılıyor..."
 npm run start
 
