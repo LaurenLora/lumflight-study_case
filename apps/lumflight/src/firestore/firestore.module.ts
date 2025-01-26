@@ -11,9 +11,15 @@ import { Firestore } from '@google-cloud/firestore';
     {
       provide: 'FIRESTORE',
       useFactory: (configService: ConfigService) => {
+        const privKey = configService
+          .get<string>('FIREBASE_PRIVATE_KEY')
+          ?.replace(/\\n/g, '\n');
         return new Firestore({
           projectId: configService.get<string>('FIRESTORE_PROJECT_ID'),
-          keyFilename: configService.get<string>('FIRESTORE_KEY_FILENAME'),
+          credentials: {
+            private_key: privKey,
+            client_email: configService.get<string>('FIREBASE_CLIENT_EMAIL'),
+          },
         });
       },
       inject: [ConfigService],
