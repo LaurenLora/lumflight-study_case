@@ -1,2 +1,9 @@
 ### Projeyi başlatmak için
-npm i && npm run start
+
+```
+chmod +x ./start.sh
+```
+
+```
+./start.sh
+```
